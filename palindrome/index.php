@@ -51,19 +51,19 @@
 // }
 
 
-function isPalindrome($str)
-{
-    // Remove spaces and punctuation and convert to lowercase
-    $cleanedStr = strtolower(preg_replace('/[^a-z]+/', '', $str));
+// function isPalindrome($str)
+// {
+//     // Remove spaces and punctuation and convert to lowercase
+//     $cleanedStr = strtolower(preg_replace('/[^a-z]+/', '', $str));
 
-    // Check if the cleaned string is the same forwards and backwards
-    return $cleanedStr === strrev($cleanedStr);
-}
+//     // Check if the cleaned string is the same forwards and backwards
+//     return $cleanedStr === strrev($cleanedStr);
+// }
 
-// Example usage
-$sentence = "A man, a plan, a canal: Panama";
-if (isPalindrome($sentence)) {
-    echo "The sentence is a palindrome!";
-} else {
-    echo "The sentence is not a palindrome.";
-}
+// // Example usage
+// $sentence = "A man, a plan, a canal: Panama";
+// if (isPalindrome($sentence)) {
+//     echo "The sentence is a palindrome!";
+// } else {
+//     echo "The sentence is not a palindrome.";
+// }
