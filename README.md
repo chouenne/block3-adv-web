@@ -4,5 +4,5 @@ Block3 - advanced Web Programming Course Notes
 
 ## Exercise
 
-- oop-class
+- oop-class-lunchbag
 - palindrome
