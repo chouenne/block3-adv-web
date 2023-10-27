@@ -74,10 +74,10 @@ class LunchBag
 
     public function compareSize()
     {
-        if (($this->containerL > $this->bagsizeL) || ($this->containerW > $this->bagsizeW) || ($this->containerD > $this->bagsizeD)) {
-            echo "Not Fit!";
+        if (($this->containerL <= $this->bagsizeL) && ($this->containerW <= $this->bagsizeW) && ($this->containerD <= $this->bagsizeD)) {
+            echo "Fit!";
         } else {
-            echo "Fit";
+            echo "Not fit!";
         }
     }
 }
