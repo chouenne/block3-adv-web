@@ -19,9 +19,7 @@ class LunchBag
     //Constructor
     public function __construct($bagsizeL, $bagsizeW, $bagsizeD, $containerL, $containerW, $containerD)
     {
-        // $this->brand = $brand;
-        //$brand here is not the one in line 8, line 8 $brand is a property, and here is the same thing with line 13, a place holder
-        // $this->color = $color;
+
         $this->bagsizeL = $bagsizeL;
         $this->bagsizeW = $bagsizeW;
         $this->bagsizeD = $bagsizeD;
@@ -31,25 +29,36 @@ class LunchBag
     }
 
     //Getter & setter method
-    // public function getVolume()
+    // public function getbagsizeL()
     // {
-    //     return $this->volume;
+    //     return $this->bagsizeL;
     // }
 
-    // public function setVolume($volume)
+    // public function setbagsizeL($bagsizeL)
     // {
-    //     $this->volume = $volume;
+    //     $this->bagsizeL = $bagsizeL;
     // }
 
-    // public function getBoxSize()
+    // public function getbagsizeW()
     // {
-    //     return $this->boxsize;
+    //     return $this->bagsizeW;
     // }
 
-    // public function setBoxSize($boxsize)
+    // public function setbagsizeL($bagsizeW)
     // {
-    //     $this->boxsize = $boxsize;
+    //     $this->bagsizeL = $bagsizeW;
     // }
+
+    // public function getbagsizeD()
+    // {
+    //     return $this->bagsizeD;
+    // }
+
+    // public function setbagsizeD($bagsizeD)
+    // {
+    //     $this->bagsizeD = $bagsizeD;
+    // }
+
 
     //Method
 
