@@ -11,14 +11,16 @@
 <body>
     <?php
     require_once 'Classes/LunchBoxClass.php';
-    $lunchbag01 = new LunchBag("Roots", "gray", "8L");
-    // echo $lunchbag01->brand;
-    // $lunchbag02 = new LunchBag("Columbie", "black");
-    // echo $lunchbag01->volume;
-    // echo $lunchbag01->getLunchBagInfo();
-    // echo $lunchbag01->volume;
-    echo $lunchbag01->setBrand("columbie");
-    echo $lunchbag01->getBrand();
+    $lunchbag01 = new LunchBag(8.5, 5.5, 2, 5.87, 5.75, 1.97);
+    echo $lunchbag01->getLunchBagSize() . "<br>";
+    echo $lunchbag01->getContainerSize() . "<br>";;
+    echo $lunchbag01->compareSize() . "<br>";
+
+
+    $lunchbag02 = new LunchBag(9.4, 6.7, 7.3, 6, 5.25, 5.25);
+    echo $lunchbag02->getLunchBagSize() . "<br>";
+    echo $lunchbag02->getContainerSize() . "<br>";;
+    echo $lunchbag02->compareSize();
     ?>
 
 </body>
