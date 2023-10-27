@@ -1,7 +1,5 @@
 <?php
 
-
-
 class LunchBag
 {
     //Properties / Fields
