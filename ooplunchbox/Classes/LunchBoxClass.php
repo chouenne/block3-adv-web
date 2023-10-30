@@ -14,8 +14,11 @@ class LunchBag
     private $containerW;
     private $containerD;
 
+    private $zipper;
+
+
     //Constructor
-    public function __construct($bagsizeL, $bagsizeW, $bagsizeD, $containerL, $containerW, $containerD)
+    public function __construct($bagsizeL, $bagsizeW, $bagsizeD, $containerL, $containerW, $containerD, $zipper)
     {
 
         $this->bagsizeL = $bagsizeL;
@@ -23,7 +26,7 @@ class LunchBag
         $this->bagsizeD = $bagsizeD;
         $this->containerL = $containerL;
         $this->containerW = $containerW;
-        $this->containerD = $containerD;
+        $this->zipper = $zipper;
     }
 
     //Getter & setter method
@@ -59,6 +62,20 @@ class LunchBag
 
 
     //Method
+
+    public function useZipper()
+    {
+        if (!($this->zipper == "right")) {
+            $this->setZipper();
+        } else {
+            echo "Put container in";
+        }
+    }
+
+    public function setZipper()
+    {
+        $this->zipper = "left";
+    }
 
     public function getLunchBagSize()
     {
