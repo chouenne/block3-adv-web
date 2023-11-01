@@ -1,33 +1,33 @@
 <?php
 
-class LunchBag
-{
+// class LunchBag
+
     //Properties / Fields
     // private $brand;
     // private $color;
-    private $bagsizeL;
-    private $bagsizeW;
-    private $bagsizeD;
+    // private $bagsizeL;
+    // private $bagsizeW;
+    // private $bagsizeD;
 
 
-    private $containerL;
-    private $containerW;
-    private $containerD;
+    // private $containerL;
+    // private $containerW;
+    // private $containerD;
 
-    private $zipper;
+    // private $zipper;
 
 
     //Constructor
-    public function __construct($bagsizeL, $bagsizeW, $bagsizeD, $containerL, $containerW, $containerD, $zipper)
-    {
+    // public function __construct($bagsizeL, $bagsizeW, $bagsizeD, $containerL, $containerW, $containerD, $zipper)
+    // {
 
-        $this->bagsizeL = $bagsizeL;
-        $this->bagsizeW = $bagsizeW;
-        $this->bagsizeD = $bagsizeD;
-        $this->containerL = $containerL;
-        $this->containerW = $containerW;
-        $this->zipper = $zipper;
-    }
+    //     $this->bagsizeL = $bagsizeL;
+    //     $this->bagsizeW = $bagsizeW;
+    //     $this->bagsizeD = $bagsizeD;
+    //     $this->containerL = $containerL;
+    //     $this->containerW = $containerW;
+    //     $this->zipper = $zipper;
+    // }
 
     //Getter & setter method
     // public function getbagsizeL()
@@ -63,38 +63,74 @@ class LunchBag
 
     //Method
 
-    public function useZipper()
-    {
-        if (!($this->zipper == "right")) {
-            $this->setZipper();
+//     public function useZipper()
+//     {
+//         if (!($this->zipper == "right")) {
+//             $this->setZipper();
+//         } else {
+//             echo "Put container in";
+//         }
+//     }
+
+//     public function setZipper()
+//     {
+//         $this->zipper = "left";
+//     }
+
+//     public function getLunchBagSize()
+//     {
+//         return "Lunch Bag Large: " . $this->bagsizeL . "in, Width: " . $this->bagsizeW  . "in, Depth: " . $this->bagsizeD . "in";
+//     }
+
+//     public function getContainerSize()
+//     {
+//         return "Container Large: " . $this->containerL . "in, Container Width: " . $this->containerW  . "in, Lunch Bag Depth: " . $this->containerD . "in";
+//     }
+
+//     //method that check if the box could be contained in the lunchbox
+
+//     public function compareSize()
+//     {
+//         if (($this->containerL <= $this->bagsizeL) && ($this->containerW <= $this->bagsizeW) && ($this->containerD <= $this->bagsizeD)) {
+//             echo "Fit!";
+//         } else {
+//             echo "Not fit!";
+//         }
+//     }
+// }
+
+class LunchBag {
+    private $color;
+    private $size;
+    private $zipperOpen;
+
+    public function __construct($color, $size) {
+        $this->color = $color;
+        $this->size = $size;
+        $this->zipperOpen = false; // Initialize zipper as closed by default
+    }
+
+    public function openZipper() {
+        $this->zipperOpen = true;
+    }
+
+    public function closeZipper() {
+        $this->zipperOpen = false;
+    }
+
+    public function isZipperOpen() {
+        return $this->zipperOpen;
+    }
+
+    public function putInItem($item) {
+        if ($this->zipperOpen) {
+            echo "Putting $item in the lunch bag.\n";
         } else {
-            echo "Put container in";
+            echo "Cannot put $item in. Zipper is closed.\n";
         }
     }
 
-    public function setZipper()
-    {
-        $this->zipper = "left";
-    }
-
-    public function getLunchBagSize()
-    {
-        return "Lunch Bag Large: " . $this->bagsizeL . "in, Width: " . $this->bagsizeW  . "in, Depth: " . $this->bagsizeD . "in";
-    }
-
-    public function getContainerSize()
-    {
-        return "Container Large: " . $this->containerL . "in, Container Width: " . $this->containerW  . "in, Lunch Bag Depth: " . $this->containerD . "in";
-    }
-
-    //method that check if the box could be contained in the lunchbox
-
-    public function compareSize()
-    {
-        if (($this->containerL <= $this->bagsizeL) && ($this->containerW <= $this->bagsizeW) && ($this->containerD <= $this->bagsizeD)) {
-            echo "Fit!";
-        } else {
-            echo "Not fit!";
-        }
+    public function takeOutItem($item) {
+        echo "Taking $item out of the lunch bag.\n";
     }
 }
