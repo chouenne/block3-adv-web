@@ -42,12 +42,12 @@ Figure 2: Employees of InstantCover and their contracts to work at hotels
 | con2     | C1024      | H25     | Edinburgh     |
 | con3     | C1025      | H4      | Glasgow       |
 
-| employmentID | eName        | hotelLocation | NINID | contraID |
-| ------------ | ------------ | ------------- | ----- | -------- |
-| E1           | Jogn Smith   | Edinburgh     | NIN01 | con2     |
-| E2           | Diane Hocine | Glasgow       | NIN02 | con2     |
-| E3           | Sarah White  | Glasgow       | NIN03 | con3     |
-| E4           | John Smith   | Glasgow       | NIN01 | con3     |
+| eName        | hotelLocation | NINID | contraID |
+| ------------ | ------------- | ----- | -------- |
+| Jogn Smith   | Edinburgh     | NIN01 | con2     |
+| Diane Hocine | Glasgow       | NIN02 | con2     |
+| Sarah White  | Glasgow       | NIN03 | con3     |
+| John Smith   | Glasgow       | NIN01 | con3     |
 
 Figure 3: Employees of state code and job code
 
