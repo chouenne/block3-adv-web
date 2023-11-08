@@ -31,11 +31,11 @@ Figure 1: Details of patient dental appointment
 
 Figure 2: Employees of InstantCover and their contracts to work at hotels
 
-| NINID | NIN      | eName        | hoursPerWeek |
-| ----- | -------- | ------------ | ------------ |
-| NIN01 | 113567WD | Jogn Smith   | 16           |
-| NIN02 | 234111XA | Diane Hocine | 24           |
-| NIN03 | 712670YD | Sarah White  | 28           |
+| NIN      | eName        | hoursPerWeek |
+| -------- | ------------ | ------------ |
+| 113567WD | Jogn Smith   | 16           |
+| 234111XA | Diane Hocine | 24           |
+| 712670YD | Sarah White  | 28           |
 
 | contraID | contractNo | hotelNo | hotelLocation |
 | -------- | ---------- | ------- | ------------- |
@@ -51,16 +51,16 @@ Figure 2: Employees of InstantCover and their contracts to work at hotels
 
 Figure 3: Employees of state code and job code
 
-| STATE ID | STATE CODE | HOME STATE |
-| -------- | ---------- | ---------- |
-| St01     | 26         | Michigan   |
-| St02     | 56         | Wyoming    |
+| STATE CODE | HOME STATE |
+| ---------- | ---------- |
+| 26         | Michigan   |
+| 56         | Wyoming    |
 
-| JOB ID | JOB CODE | JOB       |
-| ------ | -------- | --------- |
-| J1     | J01      | Chef      |
-| J2     | J02      | Waiter    |
-| J3     | J03      | Bartender |
+| JOB CODE | JOB       |
+| -------- | --------- |
+| J01      | Chef      |
+| J02      | Waiter    |
+| J03      | Bartender |
 
 | Employee_ID | NAME  |
 | ----------- | ----- |
@@ -68,13 +68,13 @@ Figure 3: Employees of state code and job code
 | E002        | Bob   |
 | E003        | Alice |
 
-| Postion ID | Employee_ID | JOB ID | STATE ID |
-| ---------- | ----------- | ------ | -------- |
-| Pos01      | E001        | J1     | St01     |
-| Pos02      | E001        | J2     | St01     |
-| Pos03      | E003        | J2     | St02     |
-| Pos04      | E001        | J3     | St02     |
-| Pos05      | E003        | J1     | St02     |
+| Employee_ID | JOB CODE | STATE CODE |
+| ----------- | -------- | ---------- |
+| E001        | J1       | St01       |
+| E001        | J2       | St01       |
+| E003        | J2       | St02       |
+| E001        | J3       | St02       |
+| E003        | J1       | St02       |
 
 Figure 4: Book of genre and author
 
