@@ -17,11 +17,6 @@ class Ingredient
     $this->price = $price;
   }
 
-  public function getIngredientID()
-  {
-    return $this->IngredientID;
-  }
-
   public function getName()
   {
     return $this->name;
