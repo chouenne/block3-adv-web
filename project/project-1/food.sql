@@ -31,3 +31,13 @@ INSERT INTO `dishIngredient` (`dishID`, `ingredientID`, `ingredientQuantity`) VA
 SELECT dishIngredient.ingredientID, dishIngredient.ingredientQuantity, dishIngredient.dishID, ingredient.ingredientName, ingredient.ingredientType, ingredient.ingredientPrice FROM ingredient
 INNER JOIN dishIngredient
 ON ingredient.ingredientID = dishIngredient.ingredientID;
+
+ALTER TABLE ingredient
+ADD supplierID INT;
+
+ALTER TABLE `ingredient` ADD CONSTRAINT `supplierID` FOREIGN KEY (`supplierID`) REFERENCES `supplier`(`supplierID`) ON DELETE RESTRICT ON UPDATE RESTRICT;
+
+UPDATE `ingredient` SET `supplierID` = '1' WHERE `ingredient`.`ingredientID` = 1
+UPDATE `ingredient` SET `supplierID` = '2' WHERE `ingredient`.`ingredientID` = 2
+UPDATE `ingredient` SET `supplierID` = '3' WHERE `ingredient`.`ingredientID` = 3
+UPDATE `ingredient` SET `supplierID` = '4' WHERE `ingredient`.`ingredientID` = 4
