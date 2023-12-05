@@ -27,3 +27,7 @@ INSERT INTO `dishIngredient` (`dishID`, `ingredientID`, `ingredientQuantity`) VA
 INSERT INTO `dishIngredient` (`dishID`, `ingredientID`, `ingredientQuantity`) VALUES ('2', '3', '100'), ('2', '4', '50')
 
 INSERT INTO `dishIngredient` (`dishID`, `ingredientID`, `ingredientQuantity`) VALUES ('3', '1', '500'), ('3', '4', '100')
+
+SELECT dishIngredient.ingredientID, dishIngredient.ingredientQuantity, dishIngredient.dishID, ingredient.ingredientName, ingredient.ingredientType, ingredient.ingredientPrice FROM ingredient
+INNER JOIN dishIngredient
+ON ingredient.ingredientID = dishIngredient.ingredientID;
