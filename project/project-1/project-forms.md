@@ -4,45 +4,45 @@ Ingredient:
 
 | IngredientID | Name           | Type       | SupplierID | Price             |
 | ------------ | -------------- | ---------- | ---------- | ----------------- |
-| I01          | Fresh Tomatoes | Vegetables | S01        | $2.50 per kg      |
-| I02          | Chicken Breast | Meat       | S02        | $5.00 per kg      |
-| I03          | Broccoli       | Vegetables | S03        | $3.00 per bunch   |
-| I04          | Olive Oil      | Condiment  | S04        | $10.00 per bottle |
+| 1            | Fresh Tomatoes | Vegetables | 1          | $2.50 per kg      |
+| 2            | Chicken Breast | Meat       | 2          | $5.00 per kg      |
+| 3            | Broccoli       | Vegetables | 3          | $3.00 per bunch   |
+| 4            | Olive Oil      | Condiment  | 4          | $10.00 per bottle |
 
 Suppliers:
 
 | SupplierID | Name          | Location          | Contact           | Email                    |
 | ---------- | ------------- | ----------------- | ----------------- | ------------------------ |
-| S01        | ABC Farms     | Farmington, QC    | John Farmer       | john@abcfarms.com        |
-| S02        | Meat Master   | Butchertown, QC   | Mary Butcher      | mary@meatmaster.com      |
-| S03        | Green Harvest | Veggie Valley, QC | Grace Gardner     | grace@greenharvest.com   |
-| S04        | Gourmet Oils  | Olive Grove, QC   | Giuseppe Oliveoil | giuseppe@gourmetoils.com |
+| 1          | ABC Farms     | Farmington, QC    | John Farmer       | john@abcfarms.com        |
+| 2          | Meat Master   | Butchertown, QC   | Mary Butcher      | mary@meatmaster.com      |
+| 3          | Green Harvest | Veggie Valley, QC | Grace Gardner     | grace@greenharvest.com   |
+| 4          | Gourmet Oils  | Olive Grove, QC   | Giuseppe Oliveoil | giuseppe@gourmetoils.com |
 
 Dishes:
 Table Name: Dish
 
 | DishID | Name                   |
 | ------ | ---------------------- |
-| D01    | Grilled Chicken Salad  |
-| D02    | Veggie Pasta Primavera |
-| D03    | Margherita Pizza       |
+| 1      | Grilled Chicken Salad  |
+| 2      | Veggie Pasta Primavera |
+| 3      | Margherita Pizza       |
 
 Junction Table for Dish and Ingredient:
 Table Name: DishIngredient
 
 | DishID | IngredientID | Quantity(g) |
 | ------ | ------------ | ----------- |
-| D01    | I03          | 200         |
-| D01    | I01          | 100         |
-| D01    | I02          | 150         |
+| 1      | 3            | 200         |
+| 1      | 1            | 100         |
+| 1      | 2            | 150         |
 
 | DishID | IngredientID | Quantity(g) |
 | ------ | ------------ | ----------- |
-| D02    | I01          | 300         |
-| D02    | I03          | 100         |
-| D02    | I04          | 50          |
+| 2      | 1            | 300         |
+| 2      | 3            | 100         |
+| 2      | 4            | 50          |
 
 | DishID | IngredientID | Quantity(g) |
 | ------ | ------------ | ----------- |
-| D03    | I01          | 500         |
-| D03    | I04          | 100         |
+| 3      | 1            | 500         |
+| 3      | 4            | 100         |
