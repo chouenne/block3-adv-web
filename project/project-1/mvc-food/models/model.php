@@ -1,13 +1,13 @@
 <?php
 
-class ConnectionObject
+class connectionObject
 {
   public function __construct(public $host, public $username, public $password, public $database)
   {
   }
 }
 
-class DishModel
+class userModel
 {
   private $mysqli;
   private $connectionObject;
@@ -35,7 +35,7 @@ class DishModel
     $mysqli = $this->connect();
     if ($mysqli) {
       $result = $mysqli->query("SELECT * FROM dish");
-      $results = [];
+
       while ($row = $result->fetch_assoc()) {
         $results[] = $row;
       }
@@ -50,8 +50,7 @@ class DishModel
   {
     $mysqli = $this->connect();
     if ($mysqli) {
-      $dishName = $mysqli->real_escape_string($dishName);
-      $mysqli->query("INSERT INTO dish (name) VALUES ('$dishName')");
+      $mysqli->query("INSERT INTO dish (dishName) VALUES ('$dishName')");
       $mysqli->close();
       return true;
     } else {
