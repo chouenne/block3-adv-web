@@ -41,8 +41,9 @@ class Controller
 
 }
 
-$connection2 = new connectionObject("localhost:3306", "kathy_food", "myNameiSKaThY999$
-", "xuan88_food");
+
+include_once '../controllers/connection.php';
+$connection2 = new connectionObject($host, $username, $password, $database);
 $controller = new Controller($connection2);
 if (isset($_POST['submit'])) {
   $controller->add();
