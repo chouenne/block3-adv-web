@@ -8,6 +8,11 @@
 </head>
 
 <body>
+  <nav>
+    <a href="?">Home</a>
+    <a href="?page=dishes">Check all Dishes</a>
+    <!-- <a href="?page=signup">Signup!</a> -->
+  </nav>
   <h1>MVC project!</h1>
   <?php
   include_once("controllers/controller.php");

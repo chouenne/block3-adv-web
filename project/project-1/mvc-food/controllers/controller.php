@@ -14,7 +14,7 @@ class Controller
   public function showDishes()
   {
     $dishes = $this->dish->selectDishes();
-    include 'views/home.php';
+    include 'views/dish.php';
   }
 
   public function showForm()
@@ -25,12 +25,13 @@ class Controller
   public function add()
   {
     $dishName = $_POST['dishName'];
+    $dishDescription = $_POST['dishDescription'];
 
     if (!$dishName) {
       echo "<p>Missing information</p>";
       $this->showForm();
       return;
-    } else if ($this->dish->insertDish($dishName)) {
+    } else if ($this->dish->insertDish($dishName, $dishDescription)) {
       echo "<p>Added dish: $dishName</p>";
     } else {
       echo "<p>Could not add dish</p>";
