@@ -1,25 +1,25 @@
 <?php
 
-include_once '../models/model.php';
+include_once 'models/model.php';
 
 class Controller
 {
-  private $model;
+  private $dish;
 
   public function __construct($connection)
   {
-    $this->model = new userModel($connection);
+    $this->dish = new dishModel($connection);
   }
 
   public function showDishes()
   {
-    $dishes = $this->model->selectDishes();
-    include '../views/home.php';
+    $dishes = $this->dish->selectDishes();
+    include 'views/home.php';
   }
 
   public function showForm()
   {
-    include '../views/form.php';
+    include 'views/form.php';
   }
 
   public function add()
@@ -30,7 +30,7 @@ class Controller
       echo "<p>Missing information</p>";
       $this->showForm();
       return;
-    } else if ($this->model->insertDish($dishName)) {
+    } else if ($this->dish->insertDish($dishName)) {
       echo "<p>Added dish: $dishName</p>";
     } else {
       echo "<p>Could not add dish</p>";
@@ -42,7 +42,7 @@ class Controller
 }
 
 
-include_once '../controllers/connection.php';
+include_once 'controllers/connection.php';
 $connection2 = new connectionObject($host, $username, $password, $database);
 $controller = new Controller($connection2);
 if (isset($_POST['submit'])) {

@@ -4,22 +4,15 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
+  <title>MVC with MySQL</title>
 </head>
 
 <body>
-  <h1>MVC with mySQL</h1>
-  <!-- add controller -->
+  <h1>MVC project!</h1>
   <?php
-  include_once 'controllers/controller.php';
-  // $controllerPath = '../controllers/controller.php';
-  
-  // if (file_exists($controllerPath)) {
-  //   include_once($controllerPath);
-  //   echo "Controller file included successfully!";
-  // } else {
-  //   echo "Error: Controller file not found!";
-  // }
+  include_once("controllers/controller.php");
+
+
   ?>
 </body>
 

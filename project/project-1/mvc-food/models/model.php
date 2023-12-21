@@ -7,7 +7,7 @@ class connectionObject
   }
 }
 
-class userModel
+class dishModel
 {
   private $mysqli;
   private $connectionObject;
