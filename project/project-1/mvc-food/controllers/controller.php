@@ -14,7 +14,7 @@ class Controller
   public function showDishes()
   {
     $dishes = $this->dish->selectDishes();
-    include 'views/dish.php';
+    include 'views/home.php';
   }
 
   public function showForm()
