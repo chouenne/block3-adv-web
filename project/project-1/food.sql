@@ -41,3 +41,19 @@ UPDATE `ingredient` SET `supplierID` = '1' WHERE `ingredient`.`ingredientID` = 1
 UPDATE `ingredient` SET `supplierID` = '2' WHERE `ingredient`.`ingredientID` = 2
 UPDATE `ingredient` SET `supplierID` = '3' WHERE `ingredient`.`ingredientID` = 3
 UPDATE `ingredient` SET `supplierID` = '4' WHERE `ingredient`.`ingredientID` = 4
+
+-- creat table ingredientType and 
+
+CREATE TABLE `xuan88_food`.`ingredientType` (`ingredientTypeID` INT NOT NULL AUTO_INCREMENT , `ingredientTypeName` VARCHAR(128) NOT NULL , PRIMARY KEY (`ingredientTypeID`)) ENGINE = InnoDB;
+
+INSERT INTO `ingredientType` (`ingredientTypeID`, `ingredientTypeName`) VALUES (NULL, 'Vegetable'), (NULL, 'Meat')
+
+INSERT INTO `ingredientType` (`ingredientTypeID`, `ingredientTypeName`) VALUES (NULL, 'Condiment'), (NULL, 'dairy product')
+
+INSERT INTO `ingredientType` (`ingredientTypeID`, `ingredientTypeName`) VALUES (NULL, 'Fruit'), (NULL, 'soy product')
+
+
+-- use the foreign key ingredientTypeID to relate with the table ingregientType
+ALTER TABLE `ingredient` ADD CONSTRAINT `ingredientTypeID` FOREIGN KEY (`ingredientTypeID`) REFERENCES `ingredientType`(`ingredientTypeID`) ON DELETE RESTRICT ON UPDATE RESTRICT;
+
+SELECT ingredient.*, supplier.supplierName, ingredientType.ingredientTypeName FROM ingredient NATURAL JOIN supplier NATURAL JOIN ingredientType;
