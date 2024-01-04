@@ -90,9 +90,7 @@ $controller = new Controller($connection);
 // }
 $controller->showNav();
 
-if (isset($_POST['submit'])) {
-  $controller->add();
-} elseif (isset($_POST['submitIngredient'])) {
+if (isset($_POST['submitIngredient'])) {
   $controller->addIngredient();
 }
 
