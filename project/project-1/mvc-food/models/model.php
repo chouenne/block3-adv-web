@@ -7,7 +7,6 @@ class connectionObject
   }
 }
 
-
 //class for dish table
 class dishModel
 {
@@ -199,5 +198,75 @@ class ingredientModel
   // }
 
 }
+
+//class for the supplier 
+class supplierhModel
+{
+  private $mysqli;
+  private $connectionObject;
+
+  public function __construct($connectionObject)
+  {
+    $this->connectionObject = $connectionObject;
+  }
+
+  public function connect()
+  {
+    try {
+      $mysqli = new mysqli($this->connectionObject->host, $this->connectionObject->username, $this->connectionObject->password, $this->connectionObject->database);
+      if ($mysqli->connect_error) {
+        throw new Exception('Could not connect');
+      }
+      return $mysqli;
+    } catch (Exception $e) {
+      // Log the exception or echo a detailed error message for debugging.
+      error_log($e->getMessage());
+      return false;
+    }
+  }
+
+  public function selectsuppliers()
+  {
+    $mysqli = $this->connect();
+    if ($mysqli) {
+      $result = $mysqli->query("SELECT * FROM supplier");
+
+      while ($row = $result->fetch_assoc()) {
+        $results[] = $row;
+      }
+      $mysqli->close();
+      return $results;
+    } else {
+      return false;
+    }
+  }
+
+  public function insertSupplier($supplierName, $supplierLocation, $supplierContact, $supplierEmail)
+  {
+    $mysqli = $this->connect();
+    if ($mysqli) {
+      $mysqli->query("INSERT INTO supplier (supplierName, supplierLocation, supplierContact, supplierEmail) VALUES ('$supplierName', '$supplierLocation', '$supplierContact', '$supplierEmail')");
+      $mysqli->close();
+      return true;
+    } else {
+      return false;
+    }
+  }
+
+
+  public function getSupplierById($supplierID)
+  {
+    $mysqli = $this->connect();
+    if ($mysqli) {
+      $result = $mysqli->query("SELECT * FROM supplier WHERE supplierID = '$supplierID'");
+      $supplier = $result->fetch_assoc();
+      $mysqli->close();
+      return $supplier;
+    } else {
+      return false;
+    }
+  }
+}
+
 
 ?>

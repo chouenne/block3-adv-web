@@ -1,18 +1,23 @@
 <?php
 
+//control is the file that connect model and view,select, edit, update, delete..
+
 include_once 'models/model.php';
 
 class Controller
 {
   private $dish;
   private $ingredientModel;
+  private $supplierModel;
 
   public function __construct($connection)
   {
     $this->dish = new dishModel($connection);
     $this->ingredientModel = new ingredientModel($connection);
+    $this->supplierModel = new supplierModel($connection);
   }
 
+  //control function for the dish
   public function showDishes()
   {
     $dishes = $this->dish->selectDishes();
@@ -77,8 +82,41 @@ class Controller
     }
   }
 
+  //control function for the dish
+  public function showSuppliers()
+  {
+    $suppliers = $this->supplier->selectSuppliers();
+    include 'views/supplier.php';
+  }
 
+  public function showFormSupplier()
+  {
+    include 'views/formSupplier.php';
+  }
+
+  public function addSupplier()
+  {
+    $supplierName = $_POST['supplierName'];
+    $supplierLocation = $_POST['supplierLocation'];
+    $supplierContact = $_POST['supplierContact'];
+    $supplierEmail = $_POST['supplierEmail'];
+
+
+    if (!$supplierName) {
+      echo "<p>Missing information</p>";
+      $this->showForm();
+      return;
+    } else if ($this->supplier->insertSupplier($supplierName, $supplierLocation, $supplierContact, $supplierEmail)) {
+      echo "<p>Added supplier: $supplierName</p>";
+    } else {
+      echo "<p>Could not add supplier</p>";
+    }
+    $this->showSuppliers();
+  }
 }
+//end of the class controller
+
+
 
 include_once 'controllers/connection.php';
 $connection = new connectionObject($host, $username, $password, $database);
@@ -103,6 +141,10 @@ if (isset($_GET['page'])) {
     $controller->showFormIngredient();
   } elseif ($_GET['page'] == 'ingredients') {
     $controller->showIngredient();
+  } elseif ($_GET['page'] == 'suppliers') {
+    $controller->showSuppliers();
+  } elseif ($_GET['page'] == 'addsupplier') {
+    $controller->showFormSupplier();
   }
 }
 
@@ -112,6 +154,10 @@ if (isset($_GET['action'])) {
     $controller->showDishes();
   } elseif ($_GET['action'] == 'showIngredients') {
     $controller->showIngredient();
+  } elseif ($_GET['action'] == 'showSuppliers') {
+    $controller->showSuppliers();
   }
 }
+
+
 ?>
