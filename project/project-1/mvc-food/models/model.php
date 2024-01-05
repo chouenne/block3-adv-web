@@ -200,7 +200,7 @@ class ingredientModel
 }
 
 //class for the supplier 
-class supplierhModel
+class supplierModel
 {
   private $mysqli;
   private $connectionObject;
