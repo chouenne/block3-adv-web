@@ -30,21 +30,18 @@
 </ul>
   <div class='card-header'> <form method='POST'>
                                 <input type='hidden' name='ingredientID' value='" . $ingredient['ingredientID'] . "'>
-                                <div class='button-container'>
-                                    <input type='submit' name='editIngredient' value='Edit'  class='btn btn-info'>
+                               
+                                    <input type='submit' name='editIngredient' value='Edit' class='btn btn-info'>
                                     <input type='submit' name='deleteIngredient' value='Delete'  class='btn btn-danger'>
-                                </div>
+                         
                             </form></div>
  </div>
  </div>
       ";
-        // var_dump($dishes);
-    
 
-        // echo $dish['dishID'] . ' ' . $dish['dishName'] . ' ' . $dish['dishDescription'] . '<br>';
       }
     } else {
-      echo 'No supplier found';
+      echo 'No ingredient found';
     }
     ?>
   </div>

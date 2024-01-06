@@ -148,13 +148,14 @@ class Controller
       $ingredientPrice = $_POST['ingredientPrice'];
       $supplierID = $_POST['supplierID'];
       $ingredientTypeID = $_POST['ingredientTypeID'];
+
       if ($this->ingredientModel->updateIngredient($ingredientID, $ingredientName, $ingredientPrice, $supplierID, $ingredientTypeID)) {
         echo "<p>Successfully updated ingredient with ID: $ingredientID</p>";
       } else {
         echo "<p>Failed to update ingredient with ID: $ingredientID</p>";
       }
     }
-    $this->showIngredient();
+    // $this->showIngredient();
   }
 
   //control function for the dish
@@ -216,9 +217,6 @@ if (isset($_POST['submitIngredient'])) {
 }
 
 
-
-
-
 if (isset($_GET['page'])) {
   if ($_GET['page'] == 'dishes') {
     $controller->showDishes();
@@ -236,15 +234,15 @@ if (isset($_GET['page'])) {
 }
 
 
-// if (isset($_GET['action'])) {
-//   if ($_GET['action'] == 'showdishes') {
-//     $controller->showDishes();
-//   } elseif ($_GET['action'] == 'showIngredients') {
-//     $controller->showIngredient();
-//   } elseif ($_GET['action'] == 'showSuppliers') {
-//     $controller->showSuppliers();
-//   }
-// }
+if (isset($_GET['action'])) {
+  if ($_GET['action'] == 'showdishes') {
+    $controller->showDishes();
+  } elseif ($_GET['action'] == 'showIngredients') {
+    $controller->showIngredient();
+  } elseif ($_GET['action'] == 'showSuppliers') {
+    $controller->showSuppliers();
+  }
+}
 
 
 ?>

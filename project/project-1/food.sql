@@ -59,3 +59,5 @@ ALTER TABLE `ingredient` ADD CONSTRAINT `ingredientTypeID` FOREIGN KEY (`ingredi
 SELECT ingredient.*, supplier.supplierName, ingredientType.ingredientTypeName FROM ingredient NATURAL JOIN supplier NATURAL JOIN ingredientType;
 
 UPDATE ingredient SET ingredientName = 'tomato', ingredientPrice = '4', supplierID = '1', ingredientTypeID = '2' WHERE ingredientID = '1';
+
+SELECT * FROM `ingredient` ORDER BY `ingredientID` ASC

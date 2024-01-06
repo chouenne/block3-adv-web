@@ -14,7 +14,7 @@
     </div>
 
     <div class="mb-3">
-      <label for="ingredientrice" class="form-label">Price</label>
+      <label for="ingredientPrice" class="form-label">Price</label>
       <input type="decimal" class="form-control" name="ingredientPrice"
         value="<?php echo $ingredient['ingredientPrice']; ?>">
     </div>
@@ -46,7 +46,6 @@
     </div>
 
     <div class="mb-3">
-
       <input class="form-control btn btn-success" type="submit" name="updateIngredient" value="Update">
     </div>
 

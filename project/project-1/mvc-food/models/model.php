@@ -137,6 +137,7 @@ class ingredientModel
                                             FROM ingredient
                                             NATURAL JOIN supplier
                                             NATURAL JOIN ingredientType
+                                            ORDER BY ingredientID ASC;
                                           ;");
       while ($row = $result->fetch_assoc()) {
         $results[] = $row;
@@ -226,9 +227,9 @@ class ingredientModel
     $mysqli = $this->connect();
     if ($mysqli) {
       $mysqli->query("UPDATE ingredient 
-                                SET ingredientName = '$ingredientName', ingredientPrice = '$ingredientPrice', supplierID = '$supplierID', 
-                                ingredientTypeID = '$ingredientTypeID'
-                                WHERE ingredientID = '$ingredientID'");
+                      SET ingredientName = '$ingredientName', ingredientPrice = '$ingredientPrice', supplierID = '$supplierID', 
+                        ingredientTypeID = '$ingredientTypeID'
+                        WHERE ingredientID = '$ingredientID'");
       $mysqli->close();
       return true;
     } else {
@@ -263,7 +264,7 @@ class supplierModel
       return false;
     }
   }
-
+  //the list
   public function selectSuppliers()
   {
     $mysqli = $this->connect();
