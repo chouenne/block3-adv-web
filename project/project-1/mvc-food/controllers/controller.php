@@ -43,7 +43,7 @@ class Controller
     } else {
       echo "<p>Could not add dish</p>";
     }
-    $this->showDishes();
+    // $this->showDishes();
   }
 
   public function deleteDish()
@@ -77,7 +77,7 @@ class Controller
         echo "<p>Failed to update dish with ID: $dishID</p>";
       }
     }
-    $this->showDishes();
+    // $this->showDishes();
   }
 
 
@@ -259,6 +259,8 @@ if (isset($_POST['submitIngredient'])) {
   $controller->updateSupplierForm();
 } elseif (isset($_POST['deleteSupplier'])) {
   $controller->deleteSupplier();
+} elseif (isset($_POST['submit'])) {
+  $controller->add();
 }
 
 

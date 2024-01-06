@@ -128,27 +128,6 @@ class ingredientModel
     }
   }
 
-  //function select ingridients
-  public function selectIngredients()
-  {
-    $mysqli = $this->connect();
-    if ($mysqli) {
-      $result = $mysqli->query("SELECT ingredient.*, supplier.supplierName, ingredientType.ingredientTypeName
-                                            FROM ingredient
-                                            NATURAL JOIN supplier
-                                            NATURAL JOIN ingredientType
-                                            ORDER BY ingredientID ASC;
-                                          ;");
-      while ($row = $result->fetch_assoc()) {
-        $results[] = $row;
-      }
-      $mysqli->close();
-      return $results;
-    } else {
-      return false;
-    }
-  }
-
   //select the data from the related tables
   public function selectSupplier()
   {
@@ -180,6 +159,26 @@ class ingredientModel
     }
   }
 
+  //fetch the record of ingredients from database
+  public function selectIngredients()
+  {
+    $mysqli = $this->connect();
+    if ($mysqli) {
+      $result = $mysqli->query("SELECT ingredient.*, supplier.supplierName, ingredientType.ingredientTypeName
+                                            FROM ingredient
+                                            NATURAL JOIN supplier
+                                            NATURAL JOIN ingredientType
+                                            ORDER BY ingredientID ASC;
+                                          ;");
+      while ($row = $result->fetch_assoc()) {
+        $results[] = $row;
+      }
+      $mysqli->close();
+      return $results;
+    } else {
+      return false;
+    }
+  }
 
   //insert ingredient function 
   public function insertIngredient($ingredientName, $ingredientPrice, $supplierID, $ingredientTypeID)
@@ -187,6 +186,18 @@ class ingredientModel
     $mysqli = $this->connect();
     if ($mysqli) {
       $mysqli->query("INSERT INTO ingredient (ingredientName, ingredientPrice, supplierID, ingredientTypeID) VALUES ('$ingredientName', '$ingredientPrice', '$supplierID', '$ingredientTypeID')");
+      $mysqli->close();
+      return true;
+    } else {
+      return false;
+    }
+  }
+
+  public function deleteIngredient($ingredientID)
+  {
+    $mysqli = $this->connect();
+    if ($mysqli) {
+      $mysqli->query("DELETE FROM ingredient WHERE ingredientID = '$ingredientID'");
       $mysqli->close();
       return true;
     } else {
@@ -203,18 +214,6 @@ class ingredientModel
       $ingredient = $result->fetch_assoc();
       $mysqli->close();
       return $ingredient;
-    } else {
-      return false;
-    }
-  }
-
-  public function deleteIngredient($ingredientID)
-  {
-    $mysqli = $this->connect();
-    if ($mysqli) {
-      $mysqli->query("DELETE FROM ingredient WHERE ingredientID = '$ingredientID'");
-      $mysqli->close();
-      return true;
     } else {
       return false;
     }

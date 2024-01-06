@@ -18,8 +18,8 @@
   <form method='POST'>
                                 <input type='hidden' name='dishID' value='" . $dish['dishID'] . "'>
                                 <div class='button-container'>
-                                    <input type='submit' name='editDish' value='Edit'  class='btn-info'>
-                                    <input type='submit' name='deleteDish' value='Delete'  class='btn-danger'>
+                                    <input type='submit' name='editDish' value='Edit'  class='btn btn-info'>
+                                    <input type='submit' name='deleteDish' value='Delete'  class='btn btn-danger'>
                                 </div>
                             </form>
   </div>
