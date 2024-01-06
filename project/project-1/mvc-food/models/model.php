@@ -306,6 +306,35 @@ class supplierModel
       return false;
     }
   }
+
+  public function deleteSupplier($supplierID)
+  {
+    $mysqli = $this->connect();
+    if ($mysqli) {
+      $mysqli->query("DELETE FROM supplier WHERE supplierID = '$supplierID'");
+      $mysqli->close();
+      return true;
+    } else {
+      return false;
+    }
+  }
+
+  // update ingredient
+
+  public function updateSupplier($supplierID, $supplierName, $supplierLocation, $supplierContact, $supplierEmail)
+  {
+    $mysqli = $this->connect();
+    if ($mysqli) {
+      $mysqli->query("UPDATE supplier 
+                      SET supplierName = '$supplierName', supplierLocation = '$supplierLocation', supplierContact = '$supplierContact', 
+                        supplierEmail = '$supplierEmail'
+                        WHERE supplierID = '$supplierID'");
+      $mysqli->close();
+      return true;
+    } else {
+      return false;
+    }
+  }
 }
 
 

@@ -184,6 +184,43 @@ class Controller
       echo "<p style='color:white; font-size:14px;';>Could not add the supplier</p>";
     }
   }
+
+  public function deleteSupplier()
+  {
+    if (isset($_POST['deleteSupplier'])) {
+      $supplierID = $_POST['supplierID'];
+      if ($this->supplierModel->deleteSupplier($supplierID)) {
+        echo "<p style='color:white; font-size:14px; width: 80%; margin: 0 auto;'>Successfully deleted supplier ID: $supplierID</p>";
+      } else {
+        echo "<p style='color:white; font-size:14px; width: 80%; margin: 0 auto;'>Failed to delete supplier ID: $supplierID</p>";
+      }
+    }
+
+  }
+  public function updatesupplierForm()
+  {
+    $supplierID = $_POST['supplierID'];
+    $supplier = $this->supplierModel->getSupplierById($supplierID); // Add a method to fetch a supplier by ID
+    include 'views/editSupplier.php';
+  }
+
+  public function updateSupplier()
+  {
+    if (isset($_POST['updateSupplier'])) {
+      $supplierID = $_POST['supplierID'];
+      $supplierName = $_POST['supplierName'];
+      $supplierLocation = $_POST['supplierLocation'];
+      $supplierContact = $_POST['supplierContact'];
+      $supplierEmail = $_POST['supplierEmail'];
+      if ($this->supplierModel->updateSupplier($supplierID, $supplierName, $supplierLocation, $supplierContact, $supplierEmail)) {
+        echo "<p>Successfully updated supplier with ID: $supplierID</p>";
+      } else {
+        echo "<p>Failed to update supplier with ID: $supplierID</p>";
+      }
+    }
+    // $this->showsuppliers();
+  }
+
 }
 //end of the class controller
 
@@ -210,11 +247,20 @@ if (isset($_POST['submitIngredient'])) {
   $controller->deleteDish();
 } elseif (isset($_POST['editIngredient'])) {
   $controller->updateIngredientForm();
+} elseif (isset($_POST['updateIngredient'])) {
+  $controller->updateIngredient();
 } elseif (isset($_POST['editDish'])) {
   $controller->updateDishForm();
 } elseif (isset($_POST['updateDish'])) {
   $controller->updateDish();
+} elseif (isset($_POST['updateSupplier'])) {
+  $controller->updateSupplier();
+} elseif (isset($_POST['editSupplier'])) {
+  $controller->updateSupplierForm();
+} elseif (isset($_POST['deleteSupplier'])) {
+  $controller->deleteSupplier();
 }
+
 
 
 if (isset($_GET['page'])) {
