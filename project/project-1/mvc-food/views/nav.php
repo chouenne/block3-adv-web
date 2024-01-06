@@ -6,8 +6,8 @@
     </div>
 
 
-    <div class="row">
-      <div class="col-lg-4 col-sm-12 mb-3 mb-sm-0">
+    <div class="row mb-5">
+      <div class="col-md-4 col-sm-12 mb-3 mb-sm-0">
         <div class="card h-100">
           <div class="card-body">
             <h5 class="card-title">Dishes</h5>
@@ -22,7 +22,7 @@
         </div>
       </div>
 
-      <div class="col-lg-4 col-sm-12">
+      <div class="col-md-4 col-sm-12">
         <div class="card h-100">
           <div class="card-body">
             <h5 class="card-title">Ingredients</h5>
@@ -36,7 +36,7 @@
         </div>
       </div>
 
-      <div class="col-lg-4 col-sm-12">
+      <div class="col-md-4 col-sm-12">
         <div class="card h-100">
           <div class="card-body">
             <h5 class="card-title">Suppliers</h5>

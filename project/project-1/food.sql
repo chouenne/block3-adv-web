@@ -57,3 +57,5 @@ INSERT INTO `ingredientType` (`ingredientTypeID`, `ingredientTypeName`) VALUES (
 ALTER TABLE `ingredient` ADD CONSTRAINT `ingredientTypeID` FOREIGN KEY (`ingredientTypeID`) REFERENCES `ingredientType`(`ingredientTypeID`) ON DELETE RESTRICT ON UPDATE RESTRICT;
 
 SELECT ingredient.*, supplier.supplierName, ingredientType.ingredientTypeName FROM ingredient NATURAL JOIN supplier NATURAL JOIN ingredientType;
+
+UPDATE ingredient SET ingredientName = 'tomato', ingredientPrice = '4', supplierID = '1', ingredientTypeID = '2' WHERE ingredientID = '1';

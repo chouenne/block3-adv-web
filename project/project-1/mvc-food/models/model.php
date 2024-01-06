@@ -74,6 +74,32 @@ class dishModel
       return false;
     }
   }
+
+  public function deleteDish($dishID)
+  {
+    $mysqli = $this->connect();
+    if ($mysqli) {
+      $mysqli->query("DELETE FROM dish WHERE dishID = '$dishID'");
+      $mysqli->close();
+      return true;
+    } else {
+      return false;
+    }
+  }
+
+  public function updatedish($dishID, $dishName, $dishDescription)
+  {
+    $mysqli = $this->connect();
+    if ($mysqli) {
+      $mysqli->query("UPDATE dish 
+                                SET dishName = '$dishName', dishDescription = '$dishDescription'
+                                WHERE dishID = '$dishID'");
+      $mysqli->close();
+      return true;
+    } else {
+      return false;
+    }
+  }
 }
 
 //class for ingredient table
@@ -167,6 +193,7 @@ class ingredientModel
     }
   }
 
+  //for edit form fetch
   public function getIngredientById($ingredientID)
   {
     $mysqli = $this->connect();
@@ -180,22 +207,34 @@ class ingredientModel
     }
   }
 
-  //update ingredient
+  public function deleteIngredient($ingredientID)
+  {
+    $mysqli = $this->connect();
+    if ($mysqli) {
+      $mysqli->query("DELETE FROM ingredient WHERE ingredientID = '$ingredientID'");
+      $mysqli->close();
+      return true;
+    } else {
+      return false;
+    }
+  }
 
-  // public function updateIngredient($ingredientID, $ingredientName, $ingredientPrice, $supplierID, $ingredientTypeID)
-  // {
-  //   $mysqli = $this->connect();
-  //   if ($mysqli) {
-  //     $mysqli->query("UPDATE ingredient 
-  //                               SET ingredientName = '$ingredientName', ingredientPrice = '$ingredientPrice', supplierID = '$supplierID', 
-  //                               ingredientTypeID = '$ingredientTypeID', 
-  //                               WHERE ingredientID = '$ingredientID'");
-  //     $mysqli->close();
-  //     return true;
-  //   } else {
-  //     return false;
-  //   }
-  // }
+  // update ingredient
+
+  public function updateIngredient($ingredientID, $ingredientName, $ingredientPrice, $supplierID, $ingredientTypeID)
+  {
+    $mysqli = $this->connect();
+    if ($mysqli) {
+      $mysqli->query("UPDATE ingredient 
+                                SET ingredientName = '$ingredientName', ingredientPrice = '$ingredientPrice', supplierID = '$supplierID', 
+                                ingredientTypeID = '$ingredientTypeID'
+                                WHERE ingredientID = '$ingredientID'");
+      $mysqli->close();
+      return true;
+    } else {
+      return false;
+    }
+  }
 
 }
 
@@ -225,7 +264,7 @@ class supplierModel
     }
   }
 
-  public function selectsuppliers()
+  public function selectSuppliers()
   {
     $mysqli = $this->connect();
     if ($mysqli) {

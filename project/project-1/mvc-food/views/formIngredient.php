@@ -1,40 +1,54 @@
 <h2>Add a Ingredient</h2>
-<form method="POST" action="?action=showIngredients">
-  <label for="name">Name</label>
-  <input type="text" name="ingredientName" placeholder="Name" required>
 
-  <label for="price">Price</label>
-  <input type="decimal" name="ingredientPrice" placeholder="Price" required>
+<div class="container d-flex justify-content-center">
 
-  <label for="">Supplier</label>
-  <?php
-  if ($suppliers) {
-    echo "<select name='supplierID'>";
-    echo "<option value=''>Select supplier</option>";
-    foreach ($suppliers as $supplier) {
-      echo "<option value='" . $supplier['supplierID'] . "'>" . $supplier['supplierName'] . "</option>";
-    }
-    echo "</select>";
-  } else {
-    echo 'No suppliers found';
-  }
-  ?>
+  <form method="POST" action="?action=showIngredients" style="width: 50%; margin-bottom:30px;">
+    <div class="mb-3">
+      <label for="name" class="form-label">Name</label>
+      <input type="text" class="form-control" name="ingredientName" placeholder="Name" required>
+    </div>
 
+    <div class="mb-3">
+      <label for="price" class="form-label">Price</label>
+      <input type="decimal" class="form-control" name="ingredientPrice" placeholder="Price" required>
+    </div>
 
-  <label for="">Ingredient Type</label>
-  <?php
-  if ($ingredientTypes) {
-    echo "<select name='ingredientTypeID'>";
-    echo "<option value=''>Select ingredient type</option>";
-    foreach ($ingredientTypes as $ingredientType) {
-      echo "<option value='" . $ingredientType['ingredientTypeID'] . "'>" . $ingredientType['ingredientTypeName'] . "</option>";
-    }
-    echo "</select>";
-  } else {
-    echo 'No ingredients found';
-  }
-  ?>
+    <div class="mb-3">
+      <label for="" class="form-label">Supplier</label>
+      <?php
+      if ($suppliers) {
+        echo "<select name='supplierID'>";
+        echo "<option value=''>Select supplier</option>";
+        foreach ($suppliers as $supplier) {
+          echo "<option value='" . $supplier['supplierID'] . "'>" . $supplier['supplierName'] . "</option>";
+        }
+        echo "</select>";
+      } else {
+        echo 'No suppliers found';
+      }
+      ?>
+    </div>
 
-  <input type="submit" name="submitIngredient" value="Add Ingredient">
+    <div class="mb-3">
+      <label for="">Ingredient Type</label>
+      <?php
+      if ($ingredientTypes) {
+        echo "<select name='ingredientTypeID'>";
+        echo "<option value=''>Select ingredient type</option>";
+        foreach ($ingredientTypes as $ingredientType) {
+          echo "<option value='" . $ingredientType['ingredientTypeID'] . "'>" . $ingredientType['ingredientTypeName'] . "</option>";
+        }
+        echo "</select>";
+      } else {
+        echo 'No ingredients found';
+      }
+      ?>
+    </div>
 
-</form>
+    <div class="mb-3">
+
+      <input class="form-control btn btn-success" type="submit" name="submitIngredient" value="Add New">
+    </div>
+
+  </form>
+</div>
