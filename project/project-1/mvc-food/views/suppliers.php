@@ -1,12 +1,12 @@
 <h2>All the Suppliers</h2>
+<section class="record py-5">
+  <div class="container">
+    <div class="presentcards">
+      <?php
 
-<div class="container">
-  <div class="presentcards">
-    <?php
-
-    if ($suppliers) {
-      foreach ($suppliers as $supplier) {
-        echo "
+      if ($suppliers) {
+        foreach ($suppliers as $supplier) {
+          echo "
     
               <div class='card border-light text-light bg-transparent mb-3  h-100'>
  
@@ -27,11 +27,12 @@
                             </form></div>
  </div>
       ";
+        }
+      } else {
+        echo 'No supplier found';
       }
-    } else {
-      echo 'No supplier found';
-    }
-    ?>
-  </div>
+      ?>
+    </div>
 
-</div>
+  </div>
+</section>

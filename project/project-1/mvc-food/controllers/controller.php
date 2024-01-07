@@ -61,7 +61,7 @@ class Controller
   public function updatedishForm()
   {
     $dishID = $_POST['dishID'];
-    $dish = $this->dishModel->getDishById($dishID); // Add a method to fetch a dish by ID
+    $dish = $this->dish->getDishById($dishID); // Add a method to fetch a dish by ID
     include 'views/editDish.php';
   }
 
@@ -238,8 +238,6 @@ $controller->showNav();
 
 if (isset($_POST['submitIngredient'])) {
   $controller->addIngredient();
-} elseif (isset($_POST['updateIngredient'])) {
-  $controller->updateIngredient();
 } elseif (isset($_POST['deleteIngredient'])) {
   $controller->deleteIngredient();
 } elseif (isset($_POST['submitSupplier'])) {

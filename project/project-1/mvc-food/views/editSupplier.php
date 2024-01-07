@@ -8,24 +8,24 @@
     </div>
 
     <div class="mb-3">
-      <label for="supplierName" class="form-label">Name</label>
+      <label for="supplierName" class="form-label">Name:</label>
       <input type="text" class="form-control" name="supplierName" value="<?php echo $supplier['supplierName']; ?>">
     </div>
 
     <div class="mb-3">
-      <label for="supplierLocation" class="form-label">Supplier Location</label>
+      <label for="supplierLocation" class="form-label">Location:</label>
       <input type="text" class="form-control" name="supplierLocation"
         value="<?php echo $supplier['supplierLocation']; ?>">
     </div>
 
     <div class="mb-3">
-      <label for="supplierContact" class="form-label">Supplier Contact</label>
+      <label for="supplierContact" class="form-label">Contact:</label>
       <input type="text" class="form-control" name="supplierContact"
         value="<?php echo $supplier['supplierContact']; ?>">
     </div>
 
     <div class="mb-3">
-      <label for="supplierEmail" class="form-label">Email</label>
+      <label for="supplierEmail" class="form-label">Email:</label>
       <input type="text" class="form-control" name="supplierEmail" value="<?php echo $supplier['supplierEmail']; ?>">
     </div>
 

@@ -20,8 +20,9 @@
     </div>
 
     <div class="mb-3">
-      <label for="supplierID" class="form-label">Supplier</label>
-      <select name="supplierID">
+      <label for="supplierID" class="form-label">Supplier Name</label>
+      <select name="supplierID" style="width:100%; height: 41px;
+    border-radius: 6px;">
         <option value=''>Select supplier</option>
         <?php
         foreach ($suppliers as $supplier) {
@@ -33,8 +34,9 @@
     </div>
 
     <div class="mb-3">
-      <label for="ingredientID" class="form-label">Ingredient Type</label>
-      <select name="ingredientID">
+      <label for="ingredientTypeID" class="form-label">Ingredient Type</label>
+      <select name="ingredientTypeID" style="width:100%; height: 41px;
+    border-radius: 6px;">
         <option value=''>Select ingredient type</option>
         <?php
         foreach ($ingredientTypes as $ingredientType) {

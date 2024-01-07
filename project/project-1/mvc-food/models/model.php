@@ -164,11 +164,17 @@ class ingredientModel
   {
     $mysqli = $this->connect();
     if ($mysqli) {
+      // $result = $mysqli->query("SELECT ingredient.*, supplier.supplierName, ingredientType.ingredientTypeName
+      //                                       FROM ingredient
+      //                                       NATURAL JOIN supplier
+      //                                       NATURAL JOIN ingredientType
+      //                                       ORDER BY ingredientID ASC
+      //                                     ;");
       $result = $mysqli->query("SELECT ingredient.*, supplier.supplierName, ingredientType.ingredientTypeName
                                             FROM ingredient
-                                            NATURAL JOIN supplier
-                                            NATURAL JOIN ingredientType
-                                            ORDER BY ingredientID ASC;
+                                            INNER JOIN supplier ON ingredient.supplierID = supplier.supplierID
+                                            INNER JOIN ingredientType ON ingredient.ingredientTypeID = ingredientType.ingredientTypeID
+                                            ORDER BY ingredientID ASC
                                           ;");
       while ($row = $result->fetch_assoc()) {
         $results[] = $row;
@@ -221,20 +227,51 @@ class ingredientModel
 
   // update ingredient
 
+  // public function updateIngredient($ingredientID, $ingredientName, $ingredientPrice, $supplierID, $ingredientTypeID)
+  // {
+  //   $mysqli = $this->connect();
+  //   if ($mysqli) {
+  //     $mysqli->query("UPDATE ingredient 
+  //                     SET ingredientName = '$ingredientName', ingredientPrice = '$ingredientPrice', supplierID = '$supplierID', 
+  //                       ingredientTypeID = '$ingredientTypeID'
+  //                       WHERE ingredientID = '$ingredientID'");
+  //     $mysqli->close();
+  //     return true;
+  //   } else {
+  //     return false;
+  //   }
+  // }
+
   public function updateIngredient($ingredientID, $ingredientName, $ingredientPrice, $supplierID, $ingredientTypeID)
   {
     $mysqli = $this->connect();
     if ($mysqli) {
-      $mysqli->query("UPDATE ingredient 
-                      SET ingredientName = '$ingredientName', ingredientPrice = '$ingredientPrice', supplierID = '$supplierID', 
-                        ingredientTypeID = '$ingredientTypeID'
-                        WHERE ingredientID = '$ingredientID'");
-      $mysqli->close();
-      return true;
+      // Use a prepared statement
+      $stmt = $mysqli->prepare("UPDATE ingredient 
+                                  SET ingredientName = ?, ingredientPrice = ?, supplierID = ?, ingredientTypeID = ?
+                                  WHERE ingredientID = ?");
+
+      // Bind parameters
+      $stmt->bind_param("ssiii", $ingredientName, $ingredientPrice, $supplierID, $ingredientTypeID, $ingredientID);
+
+      // Execute the statement
+      if ($stmt->execute()) {
+        // Update successful
+        $stmt->close();
+        $mysqli->close();
+        return true;
+      } else {
+        // Update failed
+        echo "Error: " . $stmt->error;
+        $stmt->close();
+        $mysqli->close();
+        return false;
+      }
     } else {
       return false;
     }
   }
+
 
 }
 

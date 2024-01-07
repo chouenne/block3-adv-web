@@ -14,7 +14,7 @@
     <div class="mb-3">
       <label for="dishDescription" class="form-label">Description</label>
       <textarea type="text" class="form-control" name="dishDescription" value="<?php echo $dish['dishDescription']; ?>"
-        style="height:300px;"></textarea>
+        style="height:300px;color: black;"></textarea>
     </div>
 
     <div class="mb-3">
