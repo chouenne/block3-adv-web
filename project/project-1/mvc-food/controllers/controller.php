@@ -61,7 +61,7 @@ class Controller
   public function updatedishForm()
   {
     $dishID = $_POST['dishID'];
-    $dish = $this->dish->getDishById($dishID); // Add a method to fetch a dish by ID
+    $dish = $this->dishModel->getDishById($dishID); // Add a method to fetch a dish by ID
     include 'views/editDish.php';
   }
 
@@ -130,16 +130,6 @@ class Controller
 
   }
 
-  //this form is the edit form, this function for fetching the data that need to be updated
-  public function updateingredientForm()
-  {
-    $ingredientID = $_POST['ingredientID'];
-    $ingredient = $this->ingredientModel->getIngredientById($ingredientID); // Add a method to fetch a ingredient by ID
-    $suppliers = $this->ingredientModel->selectSupplier(); //fetch suppliers fpr the dropdown in the edit form
-    $ingredientTypes = $this->ingredientModel->selectIngredientType(); //fetch types for the dropdown in the edit form
-    include 'views/editIngredient.php';
-  }
-
   public function updateIngredient()
   {
     if (isset($_POST['updateIngredient'])) {
@@ -157,6 +147,17 @@ class Controller
     }
     // $this->showIngredient();
   }
+
+  //this form is the edit form, this function for fetching the data that need to be updated
+  public function updateingredientForm()
+  {
+    $ingredientID = $_POST['ingredientID'];
+    $ingredient = $this->ingredientModel->getIngredientById($ingredientID); // Add a method to fetch a ingredient by ID
+    $suppliers = $this->ingredientModel->selectSupplier(); //fetch suppliers fpr the dropdown in the edit form
+    $ingredientTypes = $this->ingredientModel->selectIngredientType(); //fetch types for the dropdown in the edit form
+    include 'views/editIngredient.php';
+  }
+
 
   //control function for the dish
   public function showSuppliers()
