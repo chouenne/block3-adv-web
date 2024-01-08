@@ -170,10 +170,16 @@ class ingredientModel
       //                                       NATURAL JOIN ingredientType
       //                                       ORDER BY ingredientID ASC
       //                                     ;");
+      // $result = $mysqli->query("SELECT ingredient.*, supplier.supplierName, ingredientType.ingredientTypeName
+      //                                       FROM ingredient
+      //                                       INNER JOIN supplier ON ingredient.supplierID = supplier.supplierID
+      //                                       INNER JOIN ingredientType ON ingredient.ingredientTypeID = ingredientType.ingredientTypeID
+      //                                       ORDER BY ingredientID ASC
+      //                                     ;");
       $result = $mysqli->query("SELECT ingredient.*, supplier.supplierName, ingredientType.ingredientTypeName
                                             FROM ingredient
-                                            INNER JOIN supplier ON ingredient.supplierID = supplier.supplierID
-                                            INNER JOIN ingredientType ON ingredient.ingredientTypeID = ingredientType.ingredientTypeID
+                                           LEFT JOIN supplier ON ingredient.supplierID = supplier.supplierID
+                                            LEFT JOIN ingredientType ON ingredient.ingredientTypeID = ingredientType.ingredientTypeID
                                             ORDER BY ingredientID ASC
                                           ;");
       while ($row = $result->fetch_assoc()) {
