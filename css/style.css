@@ -1,0 +1,97 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  color: white;
+  height: 100vh;
+}
+
+li {
+  font-family: "Outfit", sans-serif;
+  font-size: 20px;
+  list-style-type: none;
+  margin-bottom: 10px;
+}
+
+a {
+  color: rgb(174, 201, 206);
+  text-decoration: none;
+  font-family: "Outfit", sans-serif;
+  font-size: 16px;
+  text-transform: capitalize;
+  line-height: 30px;
+}
+
+a:hover {
+  color: rgb(243, 167, 45);
+  transition: 0.5s;
+}
+
+h2 {
+  text-transform: uppercase;
+  text-align: center;
+  font-family: "Cinzel", serif;
+  font-size: 36px;
+  margin-bottom: 20px;
+}
+
+h3 {
+  margin: 0 auto;
+  font-size: 18px;
+  text-align: center;
+  font-family: "Outfit", sans-serif;
+  font-weight: 600;
+  margin-bottom: 30px;
+}
+
+p {
+  font-size: 15px;
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: 300;
+}
+
+.container {
+  width: 900px;
+  max-width: 80%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.bgimage {
+  background: url(https://assets-global.website-files.com/6009ec8cda7f305645c9d91b/60dc6d4ddb44aa83f43a18aa_How-to-become-a-professional-web-designer-by-the-end-of-2021_blogHero-min.jpg)
+    rgba(9, 9, 9, 0.7);
+  background-position: center;
+  background-size: cover;
+  background-blend-mode: color-burn;
+  /* min-height: 1000px; */
+  padding: 30px 0;
+}
+
+footer {
+  margin-top: 300px;
+}
+
+.footer-nav {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 40px;
+}
+
+.footer-nav a {
+  font-size: 18px;
+  font-weight: 200;
+}
+
+@media screen and (max-width: 968px) {
+  h2 {
+    font-size: 20px;
+  }
+
+  h3 {
+    font-size: 12px;
+  }
+}
