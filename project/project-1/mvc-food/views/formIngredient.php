@@ -4,20 +4,21 @@
 
   <form method="POST" action="?action=showIngredients" style="width: 50%; margin-bottom:30px;">
     <div class="mb-3">
-      <label for="name" class="form-label">Name</label>
+      <label for="name" class="form-label">Name:</label>
       <input type="text" class="form-control" name="ingredientName" placeholder="Name" required>
     </div>
 
     <div class="mb-3">
-      <label for="price" class="form-label">Price</label>
+      <label for="price" class="form-label">Price:</label>
       <input type="decimal" class="form-control" name="ingredientPrice" placeholder="Price" required>
     </div>
 
     <div class="mb-3">
-      <label for="" class="form-label">Supplier</label>
+      <label for="" class="form-label">Supplier Name:</label>
       <?php
       if ($suppliers) {
-        echo "<select name='supplierID'>";
+        echo "<select name='supplierID' style='width:100%; height: 41px;
+    border-radius: 6px;'>";
         echo "<option value=''>Select supplier</option>";
         foreach ($suppliers as $supplier) {
           echo "<option value='" . $supplier['supplierID'] . "'>" . $supplier['supplierName'] . "</option>";
@@ -30,10 +31,10 @@
     </div>
 
     <div class="mb-3">
-      <label for="">Ingredient Type</label>
+      <label for="" class="form-label">Ingredient Type:</label>
       <?php
       if ($ingredientTypes) {
-        echo "<select name='ingredientTypeID'>";
+        echo "<select name='ingredientTypeID' style='width:100%; height: 41px; border-radius: 6px;'>";
         echo "<option value=''>Select ingredient type</option>";
         foreach ($ingredientTypes as $ingredientType) {
           echo "<option value='" . $ingredientType['ingredientTypeID'] . "'>" . $ingredientType['ingredientTypeName'] . "</option>";

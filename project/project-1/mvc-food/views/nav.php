@@ -11,7 +11,8 @@
         <div class="card h-100">
           <div class="card-body">
             <h5 class="card-title">Dishes</h5>
-            <p class="card-text">Here is the block for adding and displaying all the dishes of the restaurant</p>
+            <p class="card-text">Here is the block for adding and displaying all the dishes and the descriptions in the
+              restaurant</p>
 
             <div class="d-flex justify-content-between">
               <a href="?page=dishes" class="btn btn-warning">Check</a>
