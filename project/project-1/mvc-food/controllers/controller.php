@@ -263,7 +263,6 @@ if (isset($_POST['submitIngredient'])) {
 }
 
 
-
 if (isset($_GET['page'])) {
   if ($_GET['page'] == 'dishes') {
     $controller->showDishes();
@@ -290,6 +289,84 @@ if (isset($_GET['action'])) {
     $controller->showSuppliers();
   }
 }
+
+
+// if (isset($_POST['action'])) {
+//   $action = $_POST['action'];
+//   switch ($action) {
+//     case 'addIngredient':
+//       $controller->addIngredient();
+//       break;
+//     case 'deleteIngredient':
+//       $controller->deleteIngredient();
+//       break;
+//     case 'addSupplier':
+//       $controller->addSupplier();
+//       break;
+//     case 'deleteDish':
+//       $controller->deleteDish();
+//       break;
+//     case 'updateIngredientForm':
+//       $controller->updateIngredientForm();
+//       break;
+//     case 'updateIngredient':
+//       $controller->updateIngredient();
+//       break;
+//     case 'updateDishForm':
+//       $controller->updateDishForm();
+//       break;
+//     case 'updateDish':
+//       $controller->updateDish();
+//       break;
+//     case 'updateSupplier':
+//       $controller->updateSupplier();
+//       break;
+//     case 'updateSupplierForm':
+//       $controller->updateSupplierForm();
+//       break;
+//     case 'deleteSupplier':
+//       $controller->deleteSupplier();
+//       break;
+//     case 'add':
+//       $controller->add();
+//       break;
+//     // Add other cases as needed
+//     default:
+//     // Handle unknown action
+//   }
+// }
+
+
+
+//if (isset($_GET['type']) && isset($_GET['action'])) {
+// $page = $_GET['page'];
+// $action = $_GET['action'];
+
+// switch ($page) {
+//   case 'dishes':
+//     if ($action == 'show') {
+//       $controller->showDishes();
+//     } elseif ($action == 'add') {
+//       $controller->showForm();
+//     }
+//     break;
+//   case 'ingredients':
+//     if ($action == 'show') {
+//       $controller->showIngredient();
+//     } elseif ($action == 'add') {
+//       $controller->showFormIngredient();
+//     }
+//     break;
+
+//   case 'suppliers':
+//     if ($action == 'show') {
+//       $controller->showSuppliers();
+//     } elseif ($action == 'add') {
+//       $controller->showFormSupplier();
+//     }
+//     break;
+//   default:
+// }
 
 
 ?>
