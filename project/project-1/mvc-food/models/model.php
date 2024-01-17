@@ -281,6 +281,186 @@ class ingredientModel
 
 }
 
+
+//class for the dishIngredient
+class dishIngredientModel
+{
+  //for connect to the database
+  private $mysqli;
+  private $connectionObject;
+  public function __construct($connectionObject)
+  {
+    $this->connectionObject = $connectionObject;
+  }
+
+  public function connect()
+  {
+    try {
+      $mysqli = new mysqli($this->connectionObject->host, $this->connectionObject->username, $this->connectionObject->password, $this->connectionObject->database);
+      if ($mysqli->connect_error) {
+        throw new Exception('Could not connect: ' . $mysqli->connect_error);
+      }
+      return $mysqli;
+    } catch (Exception $e) {
+      // Log the exception or echo a detailed error message for debugging.
+      error_log($e->getMessage());
+      return false;
+    }
+  }
+
+  //select the data from the related tables
+  public function selectingredient()
+  {
+    $mysqli = $this->connect();
+    if ($mysqli) {
+      $result = $mysqli->query("SELECT * FROM ingredient");
+      while ($row = $result->fetch_assoc()) {
+        $results[] = $row;
+      }
+      $mysqli->close();
+      return $results;
+    } else {
+      return false;
+    }
+  }
+
+  public function selectdish()
+  {
+    $mysqli = $this->connect();
+    if ($mysqli) {
+      $result = $mysqli->query("SELECT * FROM dish");
+      while ($row = $result->fetch_assoc()) {
+        $results[] = $row;
+      }
+      $mysqli->close();
+      return $results;
+    } else {
+      return false;
+    }
+  }
+
+  //fetch the record of ingredients from database
+  public function selectdishIngredient()
+  {
+    $mysqli = $this->connect();
+    if ($mysqli) {
+      // $result = $mysqli->query("SELECT ingredient.*, supplier.supplierName, ingredientType.ingredientTypeName
+      //                                       FROM ingredient
+      //                                       NATURAL JOIN supplier
+      //                                       NATURAL JOIN ingredientType
+      //                                       ORDER BY ingredientID ASC
+      //                                     ;");
+      // $result = $mysqli->query("SELECT ingredient.*, supplier.supplierName, ingredientType.ingredientTypeName
+      //                                       FROM ingredient
+      //                                       INNER JOIN supplier ON ingredient.supplierID = supplier.supplierID
+      //                                       INNER JOIN ingredientType ON ingredient.ingredientTypeID = ingredientType.ingredientTypeID
+      //                                       ORDER BY ingredientID ASC
+      //                                     ;");
+      $result = $mysqli->query("SELECT dishIngredient.*, dish.dishName, ingredient.ingredientName
+                                            FROM dishIngredient
+                                           LEFT JOIN dishID ON dish.dishID = dishIngredient.dishID
+                                            LEFT JOIN ingredientID ON ingredient.ingredientID = dishIngredient.ingredientID
+                                            ORDER BY dishIngredient ASC
+                                          ;");
+      while ($row = $result->fetch_assoc()) {
+        $results[] = $row;
+      }
+      $mysqli->close();
+      return $results;
+    } else {
+      return false;
+    }
+  }
+
+  //insert ingredient function 
+  public function insertdishIngredient($dishID, $ingredientID)
+  {
+    $mysqli = $this->connect();
+    if ($mysqli) {
+      $mysqli->query("INSERT INTO dishIngredient (supplierID, ingredientID) VALUES ('$dishID', '$ingredientID')");
+      $mysqli->close();
+      return true;
+    } else {
+      return false;
+    }
+  }
+
+  public function deletedishIngredient($dishIngredientID)
+  {
+    $mysqli = $this->connect();
+    if ($mysqli) {
+      $mysqli->query("DELETE FROM dishIngredient WHERE dishIngredientID = '$dishIngredientID'");
+      $mysqli->close();
+      return true;
+    } else {
+      return false;
+    }
+  }
+
+  //for edit form fetch
+  public function getdishIngredientById($dishIngredientID)
+  {
+    $mysqli = $this->connect();
+    if ($mysqli) {
+      $result = $mysqli->query("SELECT * FROM dishIngredient WHERE dishIngredientID = '$dishIngredientID'");
+      $dishIngredient = $result->fetch_assoc();
+      $mysqli->close();
+      return $dishIngredient;
+    } else {
+      return false;
+    }
+  }
+
+  // update ingredient
+
+  // public function updateIngredient($ingredientID, $ingredientName, $ingredientPrice, $supplierID, $ingredientTypeID)
+  // {
+  //   $mysqli = $this->connect();
+  //   if ($mysqli) {
+  //     $mysqli->query("UPDATE ingredient 
+  //                     SET ingredientName = '$ingredientName', ingredientPrice = '$ingredientPrice', supplierID = '$supplierID', 
+  //                       ingredientTypeID = '$ingredientTypeID'
+  //                       WHERE ingredientID = '$ingredientID'");
+  //     $mysqli->close();
+  //     return true;
+  //   } else {
+  //     return false;
+  //   }
+  // }
+
+  public function updatedishIngredient($ingredientID, $ingredientName, $ingredientPrice, $supplierID, $ingredientTypeID)
+  {
+    $mysqli = $this->connect();
+    if ($mysqli) {
+      // Use a prepared statement
+      $stmt = $mysqli->prepare("UPDATE ingredient 
+                                  SET ingredientName = ?, ingredientPrice = ?, supplierID = ?, ingredientTypeID = ?
+                                  WHERE ingredientID = ?");
+
+      // Bind parameters
+      $stmt->bind_param("ssiii", $ingredientName, $ingredientPrice, $supplierID, $ingredientTypeID, $ingredientID);
+
+      // Execute the statement
+      if ($stmt->execute()) {
+        // Update successful
+        $stmt->close();
+        $mysqli->close();
+        return true;
+      } else {
+        // Update failed
+        echo "Error: " . $stmt->error;
+        $stmt->close();
+        $mysqli->close();
+        return false;
+      }
+    } else {
+      return false;
+    }
+  }
+
+
+}
+
 //class for the supplier 
 class supplierModel
 {
