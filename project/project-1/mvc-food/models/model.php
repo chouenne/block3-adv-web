@@ -377,7 +377,7 @@ class dishIngredientModel
   {
     $mysqli = $this->connect();
     if ($mysqli) {
-      $mysqli->query("INSERT INTO dishIngredient (supplierID, ingredientID) VALUES ('$dishID', '$ingredientID')");
+      $mysqli->query("INSERT INTO dishIngredient (dishID, ingredientID) VALUES ('$dishID', '$ingredientID')");
       $mysqli->close();
       return true;
     } else {
@@ -428,17 +428,17 @@ class dishIngredientModel
   //   }
   // }
 
-  public function updatedishIngredient($ingredientID, $ingredientName, $ingredientPrice, $supplierID, $ingredientTypeID)
+  public function updatedishIngredient($dishID, $ingredientID)
   {
     $mysqli = $this->connect();
     if ($mysqli) {
       // Use a prepared statement
-      $stmt = $mysqli->prepare("UPDATE ingredient 
-                                  SET ingredientName = ?, ingredientPrice = ?, supplierID = ?, ingredientTypeID = ?
-                                  WHERE ingredientID = ?");
+      $stmt = $mysqli->prepare("UPDATE dishIngredient 
+                                  SET dishName = ?, ingredientName = ?
+                                  WHERE dishIngredientID = ?");
 
       // Bind parameters
-      $stmt->bind_param("ssiii", $ingredientName, $ingredientPrice, $supplierID, $ingredientTypeID, $ingredientID);
+      $stmt->bind_param("ssi", $dishName, $ingredientName, $dishIngredientID);
 
       // Execute the statement
       if ($stmt->execute()) {
