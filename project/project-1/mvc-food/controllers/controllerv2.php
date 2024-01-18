@@ -159,6 +159,78 @@ class Controller
     include 'views/editIngredient.php';
   }
 
+
+  //control for the dishIngredient table
+  public function showDishIngredient()
+  {
+    $dishIngredients = $this->dishIngredientModel->selectdishIngredients();
+    include 'views/dishIngredient.php';
+  }
+
+
+  //function of showing the form of adding data the dishIngredient table
+  public function showFormDishIngredient()
+  {
+    $dishes = $this->dishIngredientModel->selectDish();
+    $ingredients = $this->dishIngredientModel->selectIngredient();
+
+    include 'views/formdishIngredient.php';
+  }
+
+  public function addIngredient()
+  {
+    $ingredientName = $_POST['ingredientName'];
+    $ingredientPrice = $_POST['ingredientPrice'];
+    $supplierID = $_POST['supplierID'];
+    $ingredientTypeID = $_POST['ingredientTypeID'];
+    if ($this->ingredientModel->insertIngredient($ingredientName, $ingredientPrice, $supplierID, $ingredientTypeID)) {
+      echo "<p>Successfully added: $ingredientName, $ingredientPrice, $supplierID, $ingredientTypeID!</p>";
+    } else {
+      echo "<p>Failed to add!</p>";
+    }
+  }
+
+  public function deleteIngredient()
+  {
+    if (isset($_POST['deleteIngredient'])) {
+      $ingredientID = $_POST['ingredientID'];
+      if ($this->ingredientModel->deleteIngredient($ingredientID)) {
+        echo "<p style='color:white; font-size:14px; width: 80%; margin: 0 auto;'>Successfully deleted ingredient ID: $ingredientID</p>";
+      } else {
+        echo "<p style='color:white; font-size:14px; width: 80%; margin: 0 auto;'>Failed to delete ingredient ID: $ingredientID</p>";
+      }
+    }
+
+  }
+
+  public function updateIngredient()
+  {
+    if (isset($_POST['updateIngredient'])) {
+      $ingredientID = $_POST['ingredientID'];
+      $ingredientName = $_POST['ingredientName'];
+      $ingredientPrice = $_POST['ingredientPrice'];
+      $supplierID = $_POST['supplierID'];
+      $ingredientTypeID = $_POST['ingredientTypeID'];
+
+      if ($this->ingredientModel->updateIngredient($ingredientID, $ingredientName, $ingredientPrice, $supplierID, $ingredientTypeID)) {
+        echo "<p>Successfully updated ingredient with ID: $ingredientID</p>";
+      } else {
+        echo "<p>Failed to update ingredient with ID: $ingredientID</p>";
+      }
+    }
+    // $this->showIngredient();
+  }
+
+  //this form is the edit form, this function for fetching the data that need to be updated
+  public function updateingredientForm()
+  {
+    $ingredientID = $_POST['ingredientID'];
+    $ingredient = $this->ingredientModel->getIngredientById($ingredientID); // Add a method to fetch a ingredient by ID
+    $suppliers = $this->ingredientModel->selectSupplier(); //fetch suppliers fpr the dropdown in the edit form
+    $ingredientTypes = $this->ingredientModel->selectIngredientType(); //fetch types for the dropdown in the edit form
+    include 'views/editIngredient.php';
+  }
+
   //control function for the dish
   public function showSuppliers()
   {
